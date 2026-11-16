@@ -12,7 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-<script src="sb_publishable_psa6dtGt-AfT4sKTOgWI0A_bERYvxgh"> </script>
+  <!-- Supabase JS v2 SDK -->
+  <script src="sb_publishable_psa6dtGt-AfT4sKTOgWI0A_bERYvxgh"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -23,13 +25,13 @@
           },
           colors: {
             heritage: {
-              ivory: '#FDFBF7',
+              ivory: '#FAFAF9',
               sand: '#F5EFE6',
-              saffron: '#C2410C',
-              terracotta: '#9A3412',
-              forest: '#14532D',
-              leaf: '#166534',
-              gold: '#D97706',
+              saffron: '#D97706',
+              terracotta: '#B45309',
+              forest: '#065F46',
+              leaf: '#047857',
+              gold: '#F59E0B',
               ink: '#1E293B'
             }
           }
@@ -101,54 +103,27 @@
     }
   </style>
 </head>
-<body class="antialiased selection:bg-orange-200 selection:text-orange-900">
+<body class="antialiased selection:bg-amber-200 selection:text-amber-950">
+
+  <!-- SUPABASE SETUP / MODE BANNER (Shown when placeholder keys are detected) -->
+  <div id="supabaseModeBanner" class="hidden bg-amber-950 text-amber-100 text-xs px-4 py-2.5 border-b border-amber-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-extrabold uppercase tracking-wider text-[10px]">Demo / Offline Mode</span>
+        <span>Paste your <strong>SUPABASE_URL</strong> & <strong>SUPABASE_ANON_KEY</strong> at the top of <code>&lt;script&gt;</code> in <code>index.html</code> to connect your live database.</span>
+      </div>
+      <button onclick="document.getElementById('supabaseModeBanner').classList.add('hidden')" class="text-amber-300 hover:text-white font-bold underline">
+        Dismiss
+      </button>
+    </div>
+  </div>
 
   <!-- TOP NAVIGATION BAR -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 sm:h-20">
-        <!-- Brand / Village Logo -->
-        <a href="#" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-heritage-saffron to-heritage-gold text-white flex items-center justify-center shadow-md group-hover:scale-105 transition">
-            <i class="fa-solid fa-gopuram text-lg sm:text-xl"></i>
-          </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900" data-i18n="brandTitle">Kushaha Portal</span>
-              <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
-                Triveniganj
-              </span>
-            </div>
-            <p class="text-xs text-slate-500 font-medium" data-i18n="brandSubtitle">Block Triveniganj • Dist. Supaul, Bihar</p>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-600">
-          <a href="#family-tree" class="px-3 py-2 rounded-lg hover:bg-stone-100 hover:text-heritage-saffron transition" data-i18n="navTree">Family Tree</a>
-          <a href="#prestige" class="px-3 py-2 rounded-lg hover:bg-stone-100 hover:text-heritage-saffron transition" data-i18n="navPrestige">Village Prestige</a>
-          <a href="#history" class="px-3 py-2 rounded-lg hover:bg-stone-100 hover:text-heritage-saffron transition" data-i18n="navHistory">History</a>
-          <a href="#religious" class="px-3 py-2 rounded-lg hover:bg-stone-100 hover:text-heritage-saffron transition" data-i18n="navReligious">Religious Places</a>
-          <a href="#committee" class="px-3 py-2 rounded-lg hover:bg-stone-100 hover:text-heritage-saffron transition" data-i18n="navCommittee">Committee</a>
-        </nav>
-
-        <!-- Right Controls: Language Toggle, Contribute CTA, Admin Panel Button -->
-        <div class="flex items-center gap-2 sm:gap-3">
-          <!-- Language Toggle -->
-          <button id="langToggleBtn" onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-stone-300 bg-stone-50 hover:bg-stone-100 text-xs sm:text-sm font-bold text-slate-800 transition shadow-sm" title="Switch Language">
-            <i class="fa-solid fa-language text-heritage-saffron text-base"></i>
-            <span id="langLabel">हिन्दी</span>
-          </button>
-
-          <!-- Contribute Button -->
-          <button onclick="openContributeModal()" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-heritage-saffron hover:bg-heritage-terracotta text-white text-sm font-semibold shadow-sm transition">
-            <i class="fa-solid fa-plus"></i>
-            <span data-i18n="btnContribute">Contribute</span>
-          </button>
-
+// ... existing code ... -->
           <!-- Admin Panel Button with Pending Badge -->
           <button onclick="openAdminModal()" class="relative flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold shadow-sm transition">
-            <i class="fa-solid fa-shield-halved text-amber-400"></i>
+            <i id="adminLockIcon" class="fa-solid fa-lock text-amber-400"></i>
             <span class="hidden md:inline" data-i18n="btnAdmin">Admin Verify</span>
             <span id="pendingBadge" class="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-extrabold rounded-full bg-amber-500 text-slate-950">
               0
@@ -515,139 +490,204 @@
         </button>
       </div>
 
-      <!-- Submission Type Switcher -->
+      <!-- Submission Body -->
       <div class="p-6">
-        <div class="grid grid-cols-2 gap-2 p-1 bg-stone-100 rounded-xl mb-5">
-          <button type="button" id="tabTreeBtn" onclick="switchContribTab('tree')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-bold bg-white text-slate-900 shadow-sm transition">
-            <i class="fa-solid fa-sitemap text-heritage-saffron mr-1"></i> Family Tree Member
-          </button>
-          <button type="button" id="tabPrestigeBtn" onclick="switchContribTab('prestige')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">
-            <i class="fa-solid fa-award text-heritage-saffron mr-1"></i> Village Achiever
-          </button>
+        <!-- Post-Submission WhatsApp Alert Screen -->
+        <div id="submissionSuccessBox" class="hidden text-center py-6 space-y-4">
+          <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-3xl">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div>
+            <h4 class="text-xl font-extrabold text-slate-900">Submission Received! (विवरण प्राप्त हुआ)</h4>
+            <p class="text-sm text-slate-600 mt-1 max-w-md mx-auto">
+              Your entry has been saved to the <strong>Pending Verification Queue</strong>. Once the Ward Admin approves it, it will appear live on Kushaha Portal.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+            <a id="whatsappNotifyLink" href="#" target="_blank" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Notify Ward Admin on WhatsApp</span>
+            </a>
+            <button type="button" onclick="resetContribModalView()" class="px-5 py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-800 font-bold text-sm transition">
+              Add Another Entry
+            </button>
+          </div>
         </div>
 
-        <!-- FORM A: ADD FAMILY TREE MEMBER -->
-        <form id="treeContribForm" onsubmit="handleTreeSubmission(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Select Father / Parent Node (पिता का नाम चुनें) *</label>
-            <select id="contribParentId" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-stone-50 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-heritage-saffron">
-              <!-- Populated dynamically with existing tree nodes -->
-            </select>
+        <!-- Forms Wrapper -->
+        <div id="contribFormsWrapper">
+          <div class="grid grid-cols-2 gap-2 p-1 bg-stone-100 rounded-xl mb-5">
+            <button type="button" id="tabTreeBtn" onclick="switchContribTab('tree')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-bold bg-white text-slate-900 shadow-sm transition">
+              <i class="fa-solid fa-sitemap text-heritage-saffron mr-1"></i> Family Tree Member
+            </button>
+            <button type="button" id="tabPrestigeBtn" onclick="switchContribTab('prestige')" class="py-2 px-3 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition">
+              <i class="fa-solid fa-award text-heritage-saffron mr-1"></i> Village Achiever
+            </button>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-3">
+          <!-- FORM A: ADD FAMILY TREE MEMBER -->
+          <form id="treeContribForm" onsubmit="handleTreeSubmission(event)" class="space-y-3.5">
             <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name (English) *</label>
-              <input type="text" id="contribNameEn" required placeholder="e.g. Ankit Kumar Jha" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-heritage-saffron" />
-            </div>
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">पूरा नाम (हिन्दी में) *</label>
-              <input type="text" id="contribNameHi" required placeholder="उदा. अंकित कुमार झा" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-heritage-saffron" />
-            </div>
-          </div>
-
-          <div class="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Ward Number *</label>
-              <select id="contribWard" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm">
-                <option value="Ward 01">Ward 01 (Purab Tola)</option>
-                <option value="Ward 04">Ward 04 (Madhya Tola)</option>
-                <option value="Ward 07">Ward 07 (Paschim Tola)</option>
-                <option value="Ward 11">Ward 11 (Dakshin Tola)</option>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Select Father / Parent Node (पिता का नाम चुनें) *</label>
+              <select id="contribParentId" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-stone-50 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-heritage-saffron">
+                <!-- Populated dynamically with existing tree nodes -->
               </select>
             </div>
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Current City (वर्तमान शहर) *</label>
-              <input type="text" id="contribCity" required placeholder="e.g. Kushaha / Patna / Delhi" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
-            </div>
-          </div>
 
-          <div class="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Profession / Role *</label>
-              <input type="text" id="contribProfession" required placeholder="e.g. Teacher / Farmer / Engineer" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name (English) *</label>
+                <input type="text" id="contribNameEn" required placeholder="e.g. Ankit Kumar Jha" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-heritage-saffron" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">पूरा नाम (हिन्दी में) *</label>
+                <input type="text" id="contribNameHi" required placeholder="उदा. अंकित कुमार झा" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-heritage-saffron" />
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Status</label>
-              <select id="contribStatus" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm">
-                <option value="Living">Living (वर्तमान)</option>
-                <option value="Late">Late (स्वर्गीय)</option>
-              </select>
-            </div>
-          </div>
 
-          <div class="pt-2 border-t border-stone-200 grid sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name (Submitter) *</label>
-              <input type="text" id="contribBy" required placeholder="Who is submitting?" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Spouse Name (जीवनसाथी - Optional)</label>
+                <input type="text" id="contribSpouse" placeholder="e.g. Smt. Neha Jha" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Birth Year / Era</label>
+                <input type="text" id="contribEra" placeholder="e.g. Born 1998" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Mobile (For Verification) *</label>
-              <input type="tel" id="contribPhone" required placeholder="10-digit mobile number" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
-            </div>
-          </div>
 
-          <button type="submit" class="w-full py-3 rounded-xl bg-heritage-forest hover:bg-heritage-leaf text-white font-bold text-sm shadow-md transition">
-            <i class="fa-solid fa-paper-plane mr-1.5"></i> Submit for Admin Verification
-          </button>
-        </form>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Ward No *</label>
+                <select id="contribWard" required class="w-full px-3 py-2.5 rounded-xl border border-stone-300 bg-white text-sm">
+                  <option value="Ward 01">Ward 01</option>
+                  <option value="Ward 02">Ward 02</option>
+                  <option value="Ward 03">Ward 03</option>
+                  <option value="Ward 04">Ward 04</option>
+                  <option value="Ward 05">Ward 05</option>
+                  <option value="Ward 06">Ward 06</option>
+                  <option value="Ward 07">Ward 07</option>
+                  <option value="Ward 08">Ward 08</option>
+                  <option value="Ward 09">Ward 09</option>
+                  <option value="Ward 10">Ward 10</option>
+                  <option value="Ward 11">Ward 11</option>
+                  <option value="Ward 12">Ward 12</option>
+                  <option value="Ward 13">Ward 13</option>
+                  <option value="Ward 14">Ward 14</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Tola / Mohalla *</label>
+                <input type="text" id="contribTola" required placeholder="e.g. Purab Tola" class="w-full px-3 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Current City *</label>
+                <input type="text" id="contribCity" required placeholder="Kushaha / Patna" class="w-full px-3 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
+            </div>
 
-        <!-- FORM B: NOMINATE VILLAGE ACHIEVER -->
-        <form id="prestigeContribForm" onsubmit="handlePrestigeSubmission(event)" class="space-y-4 hidden">
-          <div class="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Achiever Name (English) *</label>
-              <input type="text" id="achNameEn" required placeholder="e.g. Capt. Vivek Singh" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Profession / Role *</label>
+                <input type="text" id="contribProfession" required placeholder="e.g. Teacher / Farmer / Engineer" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Status</label>
+                <select id="contribStatus" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm">
+                  <option value="Living">Living (वर्तमान)</option>
+                  <option value="Late">Late (स्वर्गीय)</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">नाम (हिन्दी में) *</label>
-              <input type="text" id="achNameHi" required placeholder="उदा. कैप्टन विवेक सिंह" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
-            </div>
-          </div>
 
-          <div class="grid sm:grid-cols-2 gap-3">
+            <!-- Photo Upload with Auto-Compression -->
             <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Category *</label>
-              <select id="achCategory" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm">
-                <option value="defense">Defense & Govt Services</option>
-                <option value="professional">Doctors & Engineers</option>
-                <option value="social">Education & Progressive Farming</option>
-              </select>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">
+                Photo Upload (Auto-compressed for fast 4G upload)
+              </label>
+              <input type="file" id="contribPhotoInput" accept="image/*" class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-amber-100 file:text-amber-950 hover:file:bg-amber-200 cursor-pointer border border-stone-200 rounded-xl p-1.5" />
             </div>
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Designation / Post *</label>
-              <input type="text" id="achRole" required placeholder="e.g. BPSC Officer / Indian Army" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
-            </div>
-          </div>
 
-          <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Achievement Summary *</label>
-            <textarea id="achBio" rows="2" required placeholder="Brief details about their contribution or achievement..." class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-sm"></textarea>
-          </div>
-
-          <div class="pt-2 border-t border-stone-200 grid sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name *</label>
-              <input type="text" id="achBy" required placeholder="Submitter name" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
+            <div class="pt-2 border-t border-stone-200 grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name (Submitter) *</label>
+                <input type="text" id="contribBy" required placeholder="Who is submitting?" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Mobile (For Verification) *</label>
+                <input type="tel" id="contribPhone" required placeholder="10-digit mobile number" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Mobile Number *</label>
-              <input type="tel" id="achPhone" required placeholder="10-digit number" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
-            </div>
-          </div>
 
-          <button type="submit" class="w-full py-3 rounded-xl bg-heritage-saffron hover:bg-heritage-terracotta text-white font-bold text-sm shadow-md transition">
-            <i class="fa-solid fa-paper-plane mr-1.5"></i> Submit Achiever for Approval
-          </button>
-        </form>
+            <button type="submit" id="treeSubmitBtn" class="w-full py-3 rounded-xl bg-heritage-forest hover:bg-heritage-leaf text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Submit for Admin Verification</span>
+            </button>
+          </form>
+
+          <!-- FORM B: NOMINATE VILLAGE ACHIEVER -->
+          <form id="prestigeContribForm" onsubmit="handlePrestigeSubmission(event)" class="space-y-3.5 hidden">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Achiever Name (English) *</label>
+                <input type="text" id="achNameEn" required placeholder="e.g. Capt. Vivek Singh" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">नाम (हिन्दी में) *</label>
+                <input type="text" id="achNameHi" required placeholder="उदा. कैप्टन विवेक सिंह" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Category *</label>
+                <select id="achCategory" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm">
+                  <option value="defense">Defense & Govt Services</option>
+                  <option value="professional">Doctors & Engineers</option>
+                  <option value="social">Education & Progressive Farming</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Designation / Post *</label>
+                <input type="text" id="achRole" required placeholder="e.g. BPSC Officer / Indian Army" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Achievement Summary *</label>
+              <textarea id="achBio" rows="2" required placeholder="Brief details about their contribution or achievement..." class="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-sm"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Achiever Photo (Optional)</label>
+              <input type="file" id="achPhotoInput" accept="image/*" class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-amber-100 file:text-amber-950 hover:file:bg-amber-200 cursor-pointer border border-stone-200 rounded-xl p-1.5" />
+            </div>
+
+            <div class="pt-2 border-t border-stone-200 grid sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name *</label>
+                <input type="text" id="achBy" required placeholder="Submitter name" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Mobile Number *</label>
+                <input type="tel" id="achPhone" required placeholder="10-digit number" class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-amber-50/50 text-sm" />
+              </div>
+            </div>
+
+            <button type="submit" id="prestigeSubmitBtn" class="w-full py-3 rounded-xl bg-heritage-saffron hover:bg-heritage-terracotta text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Submit Achiever for Approval</span>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ========================================================= -->
-  <!-- MODAL 2: ADMIN VERIFICATION PANEL (एडमिन सत्यापन पैनल)    -->
+  <!-- MODAL 2: ADMIN AUTH & VERIFICATION DASHBOARD              -->
   <!-- ========================================================= -->
-  <div id="adminModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+  <div id="adminModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
     <div class="bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-stone-200 overflow-hidden my-8">
       <!-- Admin Header -->
       <div class="bg-slate-900 px-6 py-4 text-white flex items-center justify-between">
@@ -656,24 +696,109 @@
             <i class="fa-solid fa-shield-halved text-lg"></i>
           </div>
           <div>
-            <h3 class="font-extrabold text-lg">Ward Admin Verification Queue</h3>
-            <p class="text-xs text-slate-400">Review villager submissions before publishing to Kushaha Portal</p>
+            <h3 class="font-extrabold text-lg">Kushaha Admin Governance Portal</h3>
+            <p id="adminHeaderSubtitle" class="text-xs text-slate-400">Authenticated access required to verify & publish records</p>
           </div>
         </div>
-        <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <div class="flex items-center gap-2">
+          <button id="adminSignOutBtn" onclick="handleAdminSignOut()" class="hidden px-3 py-1.5 rounded-xl bg-rose-600/20 hover:bg-rose-600 text-rose-200 hover:text-white text-xs font-bold transition">
+            <i class="fa-solid fa-right-from-bracket mr-1"></i> Sign Out
+          </button>
+          <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
-      <!-- Admin Content Body -->
-      <div class="p-6 max-h-[75vh] overflow-y-auto">
-        <div class="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-between text-xs text-amber-900">
-          <span><i class="fa-solid fa-circle-info mr-1"></i> <strong>Demo Admin Mode Active:</strong> Approving an item immediately updates the live website!</span>
-          <span class="font-bold" id="adminQueueCountLabel">0 Pending</span>
+      <!-- VIEW 1: SUPABASE ADMIN LOGIN FORM (Shown when logged out) -->
+      <div id="adminLoginView" class="p-6 sm:p-8 max-w-md mx-auto">
+        <div class="text-center mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-950 text-xs font-extrabold">
+            <i class="fa-solid fa-key"></i> Ward & Super Admin Login
+          </span>
+          <h4 class="text-xl font-extrabold text-slate-900 mt-2">Sign in to Verify Submissions</h4>
+          <p class="text-xs text-slate-500 mt-1">Only authorized Kushaha Committee Admins can approve family tree and prestige updates.</p>
         </div>
 
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Admin Email</label>
+            <input type="email" id="adminEmailInput" required placeholder="admin@kushaha.in" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Password</label>
+            <input type="password" id="adminPasswordInput" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
+          </div>
+          <button type="submit" id="adminLoginSubmitBtn" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition">
+            Sign In with Supabase Auth
+          </button>
+        </form>
+
+        <!-- Demo Mode Quick Bypass (Only visible when Supabase keys are placeholders) -->
+        <div id="demoAdminBypassBox" class="hidden mt-6 pt-5 border-t border-stone-200 text-center">
+          <p class="text-xs text-slate-500 mb-2.5">Running in Offline Prototype Mode (Supabase keys not configured yet):</p>
+          <button type="button" onclick="enterDemoAdminMode()" class="w-full py-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 border border-amber-300 text-amber-950 font-bold text-xs transition">
+            <i class="fa-solid fa-bolt mr-1"></i> Enter Demo Admin Queue (Offline Preview)
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 2: AUTHENTICATED ADMIN DASHBOARD -->
+      <div id="adminDashboardView" class="hidden p-6 max-h-[75vh] overflow-y-auto">
+        <!-- Admin Status & Tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-stone-200">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 font-extrabold" id="loggedInAdminBadge">
+              Super Admin
+            </span>
+            <span class="text-slate-600 font-medium" id="loggedInAdminEmail">admin@kushaha.in</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button type="button" id="adminTabQueueBtn" onclick="switchAdminTab('queue')" class="px-3.5 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold transition">
+              Pending Queue (<span id="adminQueueCountLabel">0</span>)
+            </button>
+            <button type="button" id="adminTabDirectBtn" onclick="switchAdminTab('direct')" class="px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-800 text-xs font-bold transition">
+              <i class="fa-solid fa-plus mr-1"></i> Direct Admin Add
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: PENDING SUBMISSIONS QUEUE -->
         <div id="adminQueueList" class="space-y-4">
           <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- TAB 2: DIRECT ADMIN ADD (Bypass Queue for Seeding Root Ancestors) -->
+        <div id="adminDirectAddPanel" class="hidden">
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 mb-4">
+            <strong>Direct Admin Entry:</strong> Records added here are published immediately to the live Family Tree without waiting in the pending queue. Ideal for seeding root ancestors.
+          </div>
+          <form onsubmit="handleDirectAdminAdd(event)" class="space-y-3.5">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Parent Node (Leave empty for Root Ancestor)</label>
+              <select id="directParentId" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm"></select>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <input type="text" id="directNameEn" required placeholder="Full Name (English) *" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              <input type="text" id="directNameHi" required placeholder="पूरा नाम (हिन्दी में) *" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <input type="text" id="directWard" required value="Ward 01" placeholder="Ward No *" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              <input type="text" id="directTola" required placeholder="Tola (e.g. Purab Tola) *" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              <input type="text" id="directCity" required value="Kushaha" placeholder="Current City *" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <input type="text" id="directProfession" required placeholder="Profession / Role *" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm" />
+              <select id="directStatus" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm">
+                <option value="Living">Living (वर्तमान)</option>
+                <option value="Late">Late (स्वर्गीय)</option>
+              </select>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl bg-heritage-forest hover:bg-heritage-leaf text-white font-bold text-sm shadow-md transition">
+              <i class="fa-solid fa-bolt mr-1"></i> Publish Directly to Family Tree
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -683,9 +808,30 @@
   <div id="toastContainer" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
 
   <!-- ========================================================= -->
-  <!-- JAVASCRIPT APPLICATION LOGIC & DATA                       -->
+  <!-- JAVASCRIPT APPLICATION LOGIC & SUPABASE PRODUCTION ENGINE -->
   <!-- ========================================================= -->
   <script>
+    // =========================================================================
+    // 0. SUPABASE PRODUCTION CONFIGURATION
+    // Replace these two placeholders with your Supabase Project URL & Anon Key
+    // =========================================================================
+    const SUPABASE_URL = 'YOUR_SUPABASE_PROJECT_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    const ADMIN_WHATSAPP_NUMBER = '919934044556'; // Committee Coordinator WhatsApp
+
+    const isSupabaseConfigured =
+      SUPABASE_URL !== 'YOUR_SUPABASE_PROJECT_URL' &&
+      SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY' &&
+      SUPABASE_URL.startsWith('https://');
+
+    const supabaseClient = isSupabaseConfigured
+      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      : null;
+
+    let currentAdminUser = null;
+    let currentAdminProfile = null;
+    let isDemoAdminAuthenticated = false;
+
     // ---------------------------------------------------------
     // 1. BILINGUAL DICTIONARY (ENGLISH / HINDI)
     // ---------------------------------------------------------
@@ -793,383 +939,193 @@
     };
 
     // ---------------------------------------------------------
-    // 2. INITIAL SEED DATA (STORED IN LOCALSTORAGE FOR GITHUB DEMO)
+    // 3. STATE MANAGEMENT (SUPABASE LIVE + OFFLINE FALLBACK)
     // ---------------------------------------------------------
-    const defaultFamilyMembers = [
-      {
-        id: 'm1',
-        parentId: null,
-        nameEn: 'Late Pt. Harinarayan Jha',
-        nameHi: 'स्व. पं. हरिनारायण झा',
-        ward: 'Ward 01',
-        tola: 'Purab Tola',
-        profession: 'Freedom Fighter & Land Donor',
-        city: 'Kushaha',
-        status: 'Late',
-        era: '1918 – 1994',
-        bio: 'Donated ancestral land for the establishment of Kushaha Primary School and community pond.'
-      },
-      {
-        id: 'm2',
-        parentId: 'm1',
-        nameEn: 'Late Raghunandan Jha',
-        nameHi: 'स्व. रघुनंदन झा',
-        ward: 'Ward 01',
-        tola: 'Purab Tola',
-        profession: 'Headmaster & Social Reformer',
-        city: 'Kushaha',
-        status: 'Late',
-        era: '1945 – 2016',
-        bio: 'Served 35 years as a senior educator in Triveniganj block.'
-      },
-      {
-        id: 'm3',
-        parentId: 'm1',
-        nameEn: 'Brajeshwar Jha',
-        nameHi: 'ब्रजेश्वर झा',
-        ward: 'Ward 01',
-        tola: 'Purab Tola',
-        profession: 'Retired Block Agriculture Officer',
-        city: 'Kushaha',
-        status: 'Living',
-        era: 'Born 1952',
-        bio: 'Guides local farmers on modern paddy and makhana cultivation.'
-      },
-      {
-        id: 'm4',
-        parentId: 'm2',
-        nameEn: 'Dr. Ashutosh Jha',
-        nameHi: 'डॉ. आशुतोष झा',
-        ward: 'Ward 01',
-        tola: 'Purab Tola',
-        profession: 'Senior Physician (PMCH)',
-        city: 'Patna',
-        status: 'Living',
-        era: 'Born 1976',
-        bio: 'Organizes free annual health checkup camps in Kushaha every Chhath Puja.'
-      },
-      {
-        id: 'm5',
-        parentId: 'm2',
-        nameEn: 'Subedar Manoj Kumar Jha',
-        nameHi: 'सूबेदार मनोज कुमार झा',
-        ward: 'Ward 01',
-        tola: 'Purab Tola',
-        profession: 'Indian Army (Bihar Regiment)',
-        city: 'Ambala / Kushaha',
-        status: 'Living',
-        era: 'Born 1980',
-        bio: 'Decorated soldier mentoring village youth for Agniveer & defense recruitment.'
-      },
-      {
-        id: 'm6',
-        parentId: 'm4',
-        nameEn: 'Rohan Jha',
-        nameHi: 'रोहन झा',
-        ward: 'Ward 01',
-        tola: 'Purab Tola',
-        profession: 'Software Engineer',
-        city: 'Bengaluru',
-        status: 'Living',
-        era: 'Born 2001',
-        bio: 'Technical coordinator for the Kushaha Digital Village Initiative.'
-      },
-      {
-        id: 'm7',
-        parentId: null,
-        nameEn: 'Late Chaudhary Ramdev Yadav',
-        nameHi: 'स्व. चौधरी रामदेव यादव',
-        ward: 'Ward 07',
-        tola: 'Paschim Tola',
-        profession: 'Village Mukhiya (1978) & Agriculturist',
-        city: 'Kushaha',
-        status: 'Late',
-        era: '1930 – 2008',
-        bio: 'Led flood relief embankments and road connectivity towards Triveniganj market.'
-      },
-      {
-        id: 'm8',
-        parentId: 'm7',
-        nameEn: 'Suresh Prasad Yadav',
-        nameHi: 'सुरेश प्रसाद यादव',
-        ward: 'Ward 07',
-        tola: 'Paschim Tola',
-        profession: 'High School Principal',
-        city: 'Supaul',
-        status: 'Living',
-        era: 'Born 1962',
-        bio: 'Promoted girl-child education across Triveniganj Panchayat.'
-      },
-      {
-        id: 'm9',
-        parentId: 'm8',
-        nameEn: 'Priya Kumari Yadav',
-        nameHi: 'प्रिया कुमारी यादव',
-        ward: 'Ward 07',
-        tola: 'Paschim Tola',
-        profession: 'BPSC Revenue Officer',
-        city: 'Purnia',
-        status: 'Living',
-        era: 'Born 1994',
-        bio: 'First woman civil servant from Paschim Tola, Kushaha.'
-      },
-      {
-        id: 'm10',
-        parentId: null,
-        nameEn: 'Late Haji Abdul Rahman',
-        nameHi: 'स्व. हाजी अब्दुल रहमान',
-        ward: 'Ward 04',
-        tola: 'Madhya Tola',
-        profession: 'Community Elder & Weaver',
-        city: 'Kushaha',
-        status: 'Late',
-        era: '1935 – 2012',
-        bio: 'Remembered for fostering communal harmony and peace committees in Kushaha.'
-      },
-      {
-        id: 'm11',
-        parentId: 'm10',
-        nameEn: 'Master Tarique Anwar',
-        nameHi: 'मास्टर तारिक अनवर',
-        ward: 'Ward 04',
-        tola: 'Madhya Tola',
-        profession: 'Government Urdu/Hindi Teacher',
-        city: 'Kushaha',
-        status: 'Living',
-        era: 'Born 1971',
-        bio: 'Runs free evening coaching classes for middle school students.'
-      }
-    ];
-
-    const defaultPrestige = [
-      {
-        id: 'p1',
-        category: 'defense',
-        nameEn: 'Subedar Manoj Kumar Jha',
-        nameHi: 'सूबेदार मनोज कुमार झा',
-        role: 'Indian Army • Bihar Regiment',
-        year: '2002 – Present',
-        bio: 'Served in Siachen and Jammu sectors; actively trains Kushaha youth for defense physical tests.',
-        ward: 'Ward 01'
-      },
-      {
-        id: 'p2',
-        category: 'professional',
-        nameEn: 'Dr. Ashutosh Jha (MD)',
-        nameHi: 'डॉ. आशुतोष झा (एम.डी.)',
-        role: 'Senior Physician • Patna',
-        year: 'Batch 2001',
-        bio: 'Renowned medicine specialist who hosts free medical & eye camps in Kushaha every year.',
-        ward: 'Ward 01'
-      },
-      {
-        id: 'p3',
-        category: 'defense',
-        nameEn: 'Priya Kumari Yadav',
-        nameHi: 'प्रिया कुमारी यादव',
-        role: 'BPSC Gazetted Officer',
-        year: '67th BPSC',
-        bio: 'Cleared Bihar Public Service Commission exam, inspiring dozens of young girls in Triveniganj.',
-        ward: 'Ward 07'
-      },
-      {
-        id: 'p4',
-        category: 'social',
-        nameEn: 'Late Pt. Harinarayan Jha',
-        nameHi: 'स्व. पं. हरिनारायण झा',
-        role: 'Freedom Fighter & Land Donor',
-        year: '1942 Movement',
-        bio: 'Participated in the Quit India Movement and donated 2 acres of land for the village school.',
-        ward: 'Ward 01'
-      },
-      {
-        id: 'p5',
-        category: 'professional',
-        nameEn: 'Er. Nadeem Akhtar',
-        nameHi: 'इं. नदीम अख्तर',
-        role: 'Senior Civil Engineer (NHAI)',
-        year: 'NIT Patna',
-        bio: 'Contributed technical guidance for rural drainage and culvert planning in Kushaha.',
-        ward: 'Ward 04'
-      },
-      {
-        id: 'p6',
-        category: 'social',
-        nameEn: 'Brajeshwar Jha',
-        nameHi: 'ब्रजेश्वर झा',
-        role: 'Progressive Farmer & Makhana Pioneer',
-        year: 'Krishi Samman',
-        bio: 'Introduced high-yield Makhana and integrated fish farming to 40+ local farmers.',
-        ward: 'Ward 01'
-      }
-    ];
-
-    // Pre-seed 2 pending submissions so the user immediately sees how Admin Verification works!
-    const defaultPendingQueue = [
-      {
-        id: 'req_101',
-        type: 'tree',
-        submittedAt: 'Today, 10:45 AM',
-        submittedBy: 'Deepak Kumar Jha',
-        phone: '98350-XXXXX',
-        data: {
-          parentId: 'm3',
-          nameEn: 'Deepak Kumar Jha',
-          nameHi: 'दीपक कुमार झा',
-          ward: 'Ward 01',
-          tola: 'Purab Tola',
-          profession: 'Bank Probationary Officer (SBI)',
-          city: 'Darbhanga',
-          status: 'Living',
-          era: 'Born 1995',
-          bio: 'Son of Sri Brajeshwar Jha, currently posted in Darbhanga.'
-        }
-      },
-      {
-        id: 'req_102',
-        type: 'prestige',
-        submittedAt: 'Yesterday, 06:20 PM',
-        submittedBy: 'Master Tarique Anwar',
-        phone: '94312-XXXXX',
-        data: {
-          category: 'defense',
-          nameEn: 'Constable Santosh Kumar',
-          nameHi: 'संतोष कुमार (बिहार पुलिस)',
-          role: 'Bihar Special Armed Police (BSAP)',
-          year: 'Selected 2024',
-          bio: 'Selected in Bihar Police through sheer dedication; pride of Dakshin Tola.',
-          ward: 'Ward 11'
-        }
-      }
-    ];
-
-    const historyData = [
-      {
-        year: '1890s',
-        titleEn: 'Early Settlement & Origin of Name "Kushaha"',
-        titleHi: 'प्रारंभिक बसावट और "कुसहा" नाम की उत्पत्ति',
-        descEn: 'Named after the lush "Kusha" grass plains along the historic Kosi tributaries, early agrarian families settled here, transforming fertile alluvial soil into a thriving grain basket of Triveniganj.',
-        descHi: 'कोसी की सहायक धाराओं के किनारे उगने वाली पवित्र "कुश" घास के मैदानों के कारण इस गांव का नाम कुसहा पड़ा। शुरुआती कृषक परिवारों ने इसे त्रिवेणीगंज का प्रमुख अन्न भंडार बनाया।'
-      },
-      {
-        year: '1942',
-        titleEn: 'Contribution to India’s Freedom Struggle',
-        titleHi: 'भारतीय स्वतंत्रता संग्राम में योगदान',
-        descEn: 'Elders of Kushaha actively supported the Quit India Movement in Supaul-Saharsa region, sheltering freedom activists and organizing village panchayats.',
-        descHi: '1942 के भारत छोड़ो आंदोलन में कुसहा के बुजुर्गों ने सुपौल-सहरसा क्षेत्र के स्वतंत्रता सेनानियों को आश्रय और सक्रिय सहयोग प्रदान किया।'
-      },
-      {
-        year: '1956',
-        titleEn: 'Establishment of Village School & Kosi Embankment Era',
-        titleHi: 'ग्राम विद्यालय की स्थापना एवं कोसी तटबंध दौर',
-        descEn: 'Through community land donations, Kushaha’s first formal primary school was established, laying the foundation for the high literacy rate the village enjoys today.',
-        descHi: 'ग्रामीणों के भूमि दान से कुसहा के प्रथम प्राथमिक विद्यालय की नींव रखी गई, जिसने आज की उच्च साक्षरता दर का मार्ग प्रशस्त किया।'
-      },
-      {
-        year: '2026',
-        titleEn: 'Digital Kushaha & Verified Vanshavali Mission',
-        titleHi: 'डिजिटल कुसहा एवं सत्यापित वंशावली मिशन',
-        descEn: 'Launch of the community-moderated digital portal connecting local residents and global diaspora from Kushaha on one unified platform.',
-        descHi: 'गांव में रहने वाले और देश-विदेश में कार्यरत कुसहा के सभी परिवारों को एक मंच पर जोड़ने हेतु डिजिटल पोर्टल की शुरुआत।'
-      }
-    ];
-
-    const religiousData = [
-      {
-        nameEn: 'Baba Bateshwar Nath Shiv Mandir',
-        nameHi: 'बाबा बटेश्वर नाथ शिव मंदिर',
-        location: 'Purab Tola, Ward 01',
-        festival: 'Mahashivratri & Shravan Mela',
-        descEn: 'Over a century old Shiva temple surrounded by ancient banyan trees; central hub for morning prayers and Shravan rituals.',
-        descHi: 'सदियों पुराना शिव मंदिर जो विशाल वट वृक्षों से घिरा है; महाशिवरात्रि और सावन में यहाँ भव्य मेला लगता है।',
-        icon: 'fa-om',
-        color: 'orange'
-      },
-      {
-        nameEn: 'Sarvajanik Durga Mandir & Chhath Ghat',
-        nameHi: 'सार्वजनिक दुर्गा मंदिर एवं छठ घाट',
-        location: 'Madhya Tola Pond, Ward 05',
-        festival: 'Sharadiya Durga Puja & Chhath Mahaparv',
-        descEn: 'The entire village comes together for 10 days of Durga Puja cultural programs and decorates the ghat for Surya Shashthi (Chhath).',
-        descHi: 'दुर्गा पूजा के 10 दिनों तक पूरा गांव एक साथ उत्सव मनाता है और छठ महापर्व पर तालाब घाट की भव्य सजावट की जाती है।',
-        icon: 'fa-sun',
-        color: 'amber'
-      },
-      {
-        nameEn: 'Jama Masjid Kushaha & Eidgah',
-        nameHi: 'जामा मस्जिद कुसहा एवं ईदगाह',
-        location: 'Madhya-Paschim Tola, Ward 04',
-        festival: 'Eid-ul-Fitr & Eid-ul-Adha',
-        descEn: 'A historic center of prayer and brotherhood where villagers across communities exchange greetings during Eid.',
-        descHi: 'इबादत और भाईचारे का ऐतिहासिक केंद्र, जहाँ ईद के अवसर पर सभी समुदाय के लोग एक-दूसरे को शुभकामनाएं देते हैं।',
-        icon: 'fa-mosque',
-        color: 'emerald'
-      }
-    ];
-
-    const committeeData = [
-      {
-        nameEn: 'Smt. Meena Devi',
-        nameHi: 'श्रीमती मीना देवी',
-        role: 'Mukhiya, Gram Panchayat',
-        ward: 'All Wards',
-        badge: 'Panchayat Head',
-        phone: '+91 98350 11223'
-      },
-      {
-        nameEn: 'Rohan Jha',
-        nameHi: 'रोहन झा',
-        role: 'Super Admin & Tech Coordinator',
-        ward: 'Ward 01 - 04',
-        badge: 'Portal Admin',
-        phone: '+91 99340 44556'
-      },
-      {
-        nameEn: 'Rajesh Kumar Yadav',
-        nameHi: 'राजेश कुमार यादव',
-        role: 'Ward Member & Tree Verifier',
-        ward: 'Ward 05 - 09',
-        badge: 'Ward Admin',
-        phone: '+91 94312 77889'
-      },
-      {
-        nameEn: 'Master Tarique Anwar',
-        nameHi: 'मास्टर तारिक अनवर',
-        role: 'History & Culture Coordinator',
-        ward: 'Ward 10 - 14',
-        badge: 'Ward Admin',
-        phone: '+91 91234 55667'
-      }
-    ];
-
-    // ---------------------------------------------------------
-    // 3. STATE MANAGEMENT (LOCALSTORAGE)
-    // ---------------------------------------------------------
-    let familyMembers = JSON.parse(localStorage.getItem('kushaha_family')) || defaultFamilyMembers;
-    let prestigeList = JSON.parse(localStorage.getItem('kushaha_prestige')) || defaultPrestige;
-    let pendingQueue = JSON.parse(localStorage.getItem('kushaha_pending')) || defaultPendingQueue;
-    let selectedMemberId = familyMembers[0]?.id || 'm1';
+    let familyMembers = [];
+    let prestigeList = [];
+    let pendingQueue = [];
+    let selectedMemberId = null;
     let collapsedNodes = {}; // Tracks collapsed branches
 
-    function saveState() {
-      localStorage.setItem('kushaha_family', JSON.stringify(familyMembers));
-      localStorage.setItem('kushaha_prestige', JSON.stringify(prestigeList));
-      localStorage.setItem('kushaha_pending', JSON.stringify(pendingQueue));
+    // Normalize DB snake_case rows to frontend camelCase objects seamlessly
+    function mapFamilyRow(row) {
+      return {
+        id: row.id,
+        parentId: row.parent_id ?? row.parentId ?? null,
+        nameEn: row.name_en ?? row.nameEn,
+        nameHi: row.name_hi ?? row.nameHi,
+        spouseName: row.spouse_name ?? row.spouseName ?? '',
+        ward: row.ward || 'Ward 01',
+        tola: row.tola || 'Kushaha',
+        profession: row.profession || '',
+        city: row.city || 'Kushaha',
+        status: row.status || 'Living',
+        era: row.birth_year ?? row.era ?? '',
+        photoUrl: row.photo_url ?? row.photoUrl ?? '',
+        bio: row.bio || ''
+      };
+    }
+
+    function mapPrestigeRow(row) {
+      return {
+        id: row.id,
+        category: row.category || 'social',
+        nameEn: row.name_en ?? row.nameEn,
+        nameHi: row.name_hi ?? row.nameHi,
+        role: row.role || '',
+        year: row.year || '',
+        ward: row.ward || 'Kushaha',
+        photoUrl: row.photo_url ?? row.photoUrl ?? '',
+        bio: row.bio || ''
+      };
+    }
+
+    async function loadPortalData() {
+      if (isSupabaseConfigured && supabaseClient) {
+        try {
+          const [famRes, presRes] = await Promise.all([
+            supabaseClient.from('family_members').select('*').order('created_at', { ascending: true }),
+            supabaseClient.from('prestige_members').select('*').order('created_at', { ascending: false })
+          ]);
+
+          if (famRes.error) throw famRes.error;
+          if (presRes.error) throw presRes.error;
+
+          familyMembers = (famRes.data || []).map(mapFamilyRow);
+          prestigeList = (presRes.data || []).map(mapPrestigeRow);
+
+          if (currentAdminUser) {
+            await fetchAdminPendingQueue();
+          }
+        } catch (err) {
+          console.error('Supabase fetch error:', err);
+          showToast('Error loading live data: ' + err.message, 'info');
+        }
+      } else {
+        // Offline / Demo Mode using localStorage
+        document.getElementById('supabaseModeBanner').classList.remove('hidden');
+        document.getElementById('demoAdminBypassBox').classList.remove('hidden');
+
+        familyMembers = (JSON.parse(localStorage.getItem('kushaha_family')) || defaultFamilyMembers).map(mapFamilyRow);
+        prestigeList = (JSON.parse(localStorage.getItem('kushaha_prestige')) || defaultPrestige).map(mapPrestigeRow);
+        pendingQueue = JSON.parse(localStorage.getItem('kushaha_pending')) || defaultPendingQueue;
+      }
+
+      if (!selectedMemberId && familyMembers.length > 0) {
+        selectedMemberId = familyMembers[0].id;
+      }
+      renderAll();
+    }
+
+    async function fetchAdminPendingQueue() {
+      if (!isSupabaseConfigured || !supabaseClient || !currentAdminUser) return;
+      const { data, error } = await supabaseClient
+        .from('pending_submissions')
+        .select('*')
+        .eq('status', 'pending')
+        .order('created_at', { ascending: false });
+
+      if (!error && data) {
+        pendingQueue = data.map(row => ({
+          id: row.id,
+          type: row.type,
+          submittedAt: new Date(row.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+          submittedBy: row.submitter_name,
+          phone: row.submitter_phone,
+          data: row.payload
+        }));
+        updateStatsAndBadges();
+      }
+    }
+
+    function saveLocalDemoState() {
+      if (!isSupabaseConfigured) {
+        localStorage.setItem('kushaha_family', JSON.stringify(familyMembers));
+        localStorage.setItem('kushaha_prestige', JSON.stringify(prestigeList));
+        localStorage.setItem('kushaha_pending', JSON.stringify(pendingQueue));
+      }
       updateStatsAndBadges();
     }
 
     function resetDemoData() {
+      if (isSupabaseConfigured) {
+        showToast('Reset is disabled in Live Supabase Production Mode.', 'info');
+        return;
+      }
       localStorage.removeItem('kushaha_family');
       localStorage.removeItem('kushaha_prestige');
       localStorage.removeItem('kushaha_pending');
-      familyMembers = JSON.parse(JSON.stringify(defaultFamilyMembers));
-      prestigeList = JSON.parse(JSON.stringify(defaultPrestige));
+      familyMembers = JSON.parse(JSON.stringify(defaultFamilyMembers)).map(mapFamilyRow);
+      prestigeList = JSON.parse(JSON.stringify(defaultPrestige)).map(mapPrestigeRow);
       pendingQueue = JSON.parse(JSON.stringify(defaultPendingQueue));
-      selectedMemberId = 'm1';
+      selectedMemberId = familyMembers[0]?.id || null;
       collapsedNodes = {};
-      saveState();
+      saveLocalDemoState();
       renderAll();
       showToast('Demo data reset to original Kushaha records!', 'info');
+    }
+
+    // ---------------------------------------------------------
+    // 3B. CLIENT-SIDE IMAGE COMPRESSION (<= 150KB) & STORAGE UPLOAD
+    // ---------------------------------------------------------
+    async function compressAndUploadPhoto(file) {
+      if (!file) return '';
+
+      // Compress via HTML5 Canvas to max 480px width/height JPEG
+      const compressedBlob = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const MAX_SIZE = 480;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height && width > MAX_SIZE) {
+              height *= MAX_SIZE / width;
+              width = MAX_SIZE;
+            } else if (height > MAX_SIZE) {
+              width *= MAX_SIZE / height;
+              height = MAX_SIZE;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.78);
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+
+      if (isSupabaseConfigured && supabaseClient) {
+        const fileName = `member_${Date.now()}_${Math.random().toString(36).substring(2, 7)}.jpg`;
+        const { error } = await supabaseClient.storage
+          .from('village-photos')
+          .upload(fileName, compressedBlob, { contentType: 'image/jpeg' });
+
+        if (error) {
+          console.error('Photo upload error:', error);
+          showToast('Photo upload skipped: ' + error.message, 'info');
+          return '';
+        }
+
+        const { data: publicUrlData } = supabaseClient.storage
+          .from('village-photos')
+          .getPublicUrl(fileName);
+
+        return publicUrlData.publicUrl;
+      } else {
+        // Offline demo mode: return lightweight Data URL
+        return await new Promise((resolve) => {
+          const r = new FileReader();
+          r.onload = () => resolve(r.result);
+          r.readAsDataURL(compressedBlob);
+        });
+      }
     }
 
     // ---------------------------------------------------------
@@ -1277,9 +1233,11 @@
                 ? `<button type="button" onclick="event.stopPropagation(); toggleNodeCollapse('${member.id}')" class="w-7 h-7 rounded-lg bg-white border border-stone-200 hover:bg-stone-100 flex items-center justify-center text-slate-600 text-xs shrink-0">
                     <i class="fa-solid ${isCollapsed ? 'fa-plus' : 'fa-minus'}"></i>
                    </button>`
-                : `<div class="w-7 h-7 rounded-lg ${isLate ? 'bg-slate-200 text-slate-600' : 'bg-emerald-100 text-emerald-800'} flex items-center justify-center text-xs font-bold shrink-0">
-                    <i class="fa-solid ${isLate ? 'fa-user-clock' : 'fa-user'}"></i>
-                   </div>`
+                : member.photoUrl
+                  ? `<img src="${member.photoUrl}" alt="${member.nameEn}" class="w-8 h-8 rounded-lg object-cover border border-stone-300 shrink-0" />`
+                  : `<div class="w-7 h-7 rounded-lg ${isLate ? 'bg-slate-200 text-slate-600' : 'bg-emerald-100 text-emerald-800'} flex items-center justify-center text-xs font-bold shrink-0">
+                      <i class="fa-solid ${isLate ? 'fa-user-clock' : 'fa-user'}"></i>
+                     </div>`
             }
 
             <div class="min-w-0">
@@ -1329,7 +1287,10 @@
     function renderMemberInspector() {
       const inspector = document.getElementById('memberInspector');
       const m = familyMembers.find(item => item.id === selectedMemberId) || familyMembers[0];
-      if (!m) return;
+      if (!m) {
+        inspector.innerHTML = `<p class="text-sm text-slate-500 text-center py-8">No family members added yet. Click "+ Add Family Member" to begin.</p>`;
+        return;
+      }
 
       const father = familyMembers.find(item => item.id === m.parentId);
       const children = familyMembers.filter(item => item.parentId === m.id);
@@ -1337,14 +1298,18 @@
       inspector.innerHTML = `
         <div class="flex items-start justify-between gap-3 pb-4 border-b border-stone-100">
           <div class="flex items-center gap-3.5">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-heritage-forest to-emerald-700 text-white flex items-center justify-center text-xl font-extrabold shadow-md shrink-0">
-              ${m.nameEn.charAt(0)}
-            </div>
+            ${
+              m.photoUrl
+                ? `<img src="${m.photoUrl}" alt="${m.nameEn}" class="w-16 h-16 rounded-2xl object-cover border-2 border-heritage-forest shadow-md shrink-0" />`
+                : `<div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-heritage-forest to-emerald-700 text-white flex items-center justify-center text-xl font-extrabold shadow-md shrink-0">
+                    ${m.nameEn.charAt(0)}
+                   </div>`
+            }
             <div>
               <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
                 m.status === 'Late' ? 'bg-stone-200 text-slate-700' : 'bg-emerald-100 text-emerald-800'
               }">
-                ${m.status === 'Late' ? 'Late / स्वर्गीय' : 'Verified Member'} • ${m.era || ''}
+                ${m.status === 'Late' ? 'Late / स्वर्गीय' : 'Verified Member'} ${m.era ? '• ' + m.era : ''}
               </span>
               <h3 class="text-lg font-extrabold text-slate-900 mt-1">${m.nameEn}</h3>
               <p class="text-sm font-semibold text-heritage-saffron">${m.nameHi}</p>
@@ -1357,6 +1322,14 @@
             <span class="text-slate-500 font-medium"><i class="fa-solid fa-user-tie w-5 text-slate-400"></i> Father / Parent:</span>
             <span class="font-bold text-slate-800 text-right">${father ? father.nameEn : 'Root Ancestor (मूल पूर्वज)'}</span>
           </div>
+          ${
+            m.spouseName
+              ? `<div class="flex items-center justify-between py-1.5 border-b border-stone-100">
+                  <span class="text-slate-500 font-medium"><i class="fa-solid fa-ring w-5 text-slate-400"></i> Spouse:</span>
+                  <span class="font-bold text-slate-800 text-right">${m.spouseName}</span>
+                 </div>`
+              : ''
+          }
           <div class="flex items-center justify-between py-1.5 border-b border-stone-100">
             <span class="text-slate-500 font-medium"><i class="fa-solid fa-map-pin w-5 text-slate-400"></i> Ward & Tola:</span>
             <span class="font-bold text-slate-800">${m.ward} (${m.tola || 'Kushaha'})</span>
@@ -1551,6 +1524,7 @@
     function openContributeModal(tab = 'tree', preselectParentId = null) {
       const modal = document.getElementById('contributeModal');
       modal.classList.remove('hidden');
+      resetContribModalView();
 
       // Populate parent dropdown with latest familyMembers
       const parentSelect = document.getElementById('contribParentId');
@@ -1564,95 +1538,267 @@
       switchContribTab(tab);
     }
 
+    function resetContribModalView() {
+      document.getElementById('submissionSuccessBox').classList.add('hidden');
+      document.getElementById('contribFormsWrapper').classList.remove('hidden');
+    }
+
+    function showSubmissionSuccessScreen(summaryText) {
+      document.getElementById('contribFormsWrapper').classList.add('hidden');
+      document.getElementById('submissionSuccessBox').classList.remove('hidden');
+      const waText = encodeURIComponent(`Namaste Kushaha Admin! I have submitted a new entry on Kushaha Village Portal:\n${summaryText}\nPlease verify & approve it.`);
+      document.getElementById('whatsappNotifyLink').href = `https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${waText}`;
+    }
+
     function closeContributeModal() {
       document.getElementById('contributeModal').classList.add('hidden');
     }
-
-    function switchContribTab(tab) {
-      const treeForm = document.getElementById('treeContribForm');
-      const prestigeForm = document.getElementById('prestigeContribForm');
-      const tabTreeBtn = document.getElementById('tabTreeBtn');
-      const tabPrestigeBtn = document.getElementById('tabPrestigeBtn');
-
-      if (tab === 'tree') {
-        treeForm.classList.remove('hidden');
-        prestigeForm.classList.add('hidden');
-        tabTreeBtn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
-        tabTreeBtn.classList.remove('text-slate-600');
-        tabPrestigeBtn.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
-        tabPrestigeBtn.classList.add('text-slate-600');
-      } else {
-        treeForm.classList.add('hidden');
-        prestigeForm.classList.remove('hidden');
-        tabPrestigeBtn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
-        tabPrestigeBtn.classList.remove('text-slate-600');
-        tabTreeBtn.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
-        tabTreeBtn.classList.add('text-slate-600');
-      }
-    }
-
-    function handleTreeSubmission(e) {
+    async function handleTreeSubmission(e) {
       e.preventDefault();
-      const parentIdVal = document.getElementById('contribParentId').value;
-      const newReq = {
-        id: 'req_' + Date.now(),
-        type: 'tree',
-        submittedAt: 'Just now',
-        submittedBy: document.getElementById('contribBy').value.trim(),
-        phone: document.getElementById('contribPhone').value.trim(),
-        data: {
-          parentId: parentIdVal || null,
+      const submitBtn = document.getElementById('treeSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Compressing & Submitting...</span>`;
+
+      try {
+        const photoFile = document.getElementById('contribPhotoInput').files[0];
+        const photoUrl = await compressAndUploadPhoto(photoFile);
+
+        const parentIdVal = document.getElementById('contribParentId').value || null;
+        const submitterName = document.getElementById('contribBy').value.trim();
+        const submitterPhone = document.getElementById('contribPhone').value.trim();
+        const wardVal = document.getElementById('contribWard').value;
+
+        const payload = {
+          parentId: parentIdVal,
           nameEn: document.getElementById('contribNameEn').value.trim(),
           nameHi: document.getElementById('contribNameHi').value.trim(),
-          ward: document.getElementById('contribWard').value,
-          tola: 'Kushaha',
+          spouseName: document.getElementById('contribSpouse').value.trim(),
+          ward: wardVal,
+          tola: document.getElementById('contribTola').value.trim() || 'Kushaha',
           profession: document.getElementById('contribProfession').value.trim(),
           city: document.getElementById('contribCity').value.trim(),
           status: document.getElementById('contribStatus').value,
-          era: 'Added via Portal',
-          bio: `Submitted by ${document.getElementById('contribBy').value.trim()} and verified by Ward Admin.`
-        }
-      };
+          era: document.getElementById('contribEra').value.trim() || 'Verified Member',
+          photoUrl: photoUrl,
+          bio: `Submitted by ${submitterName} and verified by Ward Admin.`
+        };
 
-      pendingQueue.unshift(newReq);
-      saveState();
-      e.target.reset();
-      closeContributeModal();
-      showToast('Submitted! Open "Admin Verify" in the top bar to approve it.', 'success');
+        if (isSupabaseConfigured && supabaseClient) {
+          const { error } = await supabaseClient.from('pending_submissions').insert([{
+            type: 'tree',
+            payload: payload,
+            submitter_name: submitterName,
+            submitter_phone: submitterPhone,
+            ward: wardVal,
+            status: 'pending'
+          }]);
+          if (error) throw error;
+          if (currentAdminUser) await fetchAdminPendingQueue();
+        } else {
+          pendingQueue.unshift({
+            id: 'req_' + Date.now(),
+            type: 'tree',
+            submittedAt: 'Just now',
+            submittedBy: submitterName,
+            phone: submitterPhone,
+            data: payload
+          });
+          saveLocalDemoState();
+        }
+
+        e.target.reset();
+        showSubmissionSuccessScreen(`Name: ${payload.nameEn} (${payload.nameHi}) | Ward: ${wardVal} | By: ${submitterName}`);
+        showToast('Submission sent to Ward Admin Queue!', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('Submission failed: ' + err.message, 'info');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span>Submit for Admin Verification</span>`;
+      }
     }
 
-    function handlePrestigeSubmission(e) {
+    async function handlePrestigeSubmission(e) {
       e.preventDefault();
-      const newReq = {
-        id: 'req_' + Date.now(),
-        type: 'prestige',
-        submittedAt: 'Just now',
-        submittedBy: document.getElementById('achBy').value.trim(),
-        phone: document.getElementById('achPhone').value.trim(),
-        data: {
+      const submitBtn = document.getElementById('prestigeSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Uploading & Submitting...</span>`;
+
+      try {
+        const photoFile = document.getElementById('achPhotoInput').files[0];
+        const photoUrl = await compressAndUploadPhoto(photoFile);
+
+        const submitterName = document.getElementById('achBy').value.trim();
+        const submitterPhone = document.getElementById('achPhone').value.trim();
+
+        const payload = {
           category: document.getElementById('achCategory').value,
           nameEn: document.getElementById('achNameEn').value.trim(),
           nameHi: document.getElementById('achNameHi').value.trim(),
           role: document.getElementById('achRole').value.trim(),
           year: '2026',
           bio: document.getElementById('achBio').value.trim(),
+          photoUrl: photoUrl,
           ward: 'Kushaha'
-        }
-      };
+        };
 
-      pendingQueue.unshift(newReq);
-      saveState();
-      e.target.reset();
-      closeContributeModal();
-      showToast('Achiever nomination sent to Admin Queue!', 'success');
+        if (isSupabaseConfigured && supabaseClient) {
+          const { error } = await supabaseClient.from('pending_submissions').insert([{
+            type: 'prestige',
+            payload: payload,
+            submitter_name: submitterName,
+            submitter_phone: submitterPhone,
+            ward: 'Kushaha',
+            status: 'pending'
+          }]);
+          if (error) throw error;
+          if (currentAdminUser) await fetchAdminPendingQueue();
+        } else {
+          pendingQueue.unshift({
+            id: 'req_' + Date.now(),
+            type: 'prestige',
+            submittedAt: 'Just now',
+            submittedBy: submitterName,
+            phone: submitterPhone,
+            data: payload
+          });
+          saveLocalDemoState();
+        }
+
+        e.target.reset();
+        showSubmissionSuccessScreen(`Achiever: ${payload.nameEn} (${payload.role}) | By: ${submitterName}`);
+        showToast('Achiever nomination sent to Admin Queue!', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('Submission failed: ' + err.message, 'info');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span>Submit Achiever for Approval</span>`;
+      }
     }
 
     // ---------------------------------------------------------
-    // 8. ADMIN VERIFICATION PANEL (APPROVE / REJECT LOGIC)
+    // 8. ADMIN AUTHENTICATION & VERIFICATION DASHBOARD
     // ---------------------------------------------------------
-    function openAdminModal() {
+    async function openAdminModal() {
       document.getElementById('adminModal').classList.remove('hidden');
+
+      if (isSupabaseConfigured && supabaseClient) {
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        if (session?.user) {
+          currentAdminUser = session.user;
+          await loadAdminProfileAndShowDashboard();
+          return;
+        }
+      } else if (isDemoAdminAuthenticated) {
+        showAuthenticatedAdminDashboard('Demo Ward Admin', 'offline-demo@kushaha.in');
+        return;
+      }
+
+      // Otherwise show Login Screen
+      document.getElementById('adminLoginView').classList.remove('hidden');
+      document.getElementById('adminDashboardView').classList.add('hidden');
+      document.getElementById('adminSignOutBtn').classList.add('hidden');
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      if (!isSupabaseConfigured || !supabaseClient) {
+        showToast('Supabase keys not configured. Use "Enter Demo Admin Queue" below.', 'info');
+        return;
+      }
+
+      const btn = document.getElementById('adminLoginSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Authenticating...';
+
+      try {
+        const email = document.getElementById('adminEmailInput').value.trim();
+        const password = document.getElementById('adminPasswordInput').value;
+
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+
+        currentAdminUser = data.user;
+        await loadAdminProfileAndShowDashboard();
+        showToast('Logged in as Kushaha Admin!', 'success');
+      } catch (err) {
+        showToast('Login failed: ' + err.message, 'info');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Sign In with Supabase Auth';
+      }
+    }
+
+    async function loadAdminProfileAndShowDashboard() {
+      const { data: profile } = await supabaseClient
+        .from('admin_profiles')
+        .select('*')
+        .eq('id', currentAdminUser.id)
+        .single();
+
+      currentAdminProfile = profile;
+      const roleLabel = profile
+        ? `${profile.role === 'super_admin' ? 'Super Admin' : 'Ward Admin'} (${profile.assigned_ward})`
+        : 'Authenticated Admin';
+
+      await fetchAdminPendingQueue();
+      showAuthenticatedAdminDashboard(roleLabel, currentAdminUser.email);
+    }
+
+    function enterDemoAdminMode() {
+      isDemoAdminAuthenticated = true;
+      showAuthenticatedAdminDashboard('Demo Super Admin (Offline)', 'demo-admin@kushaha.in');
+      showToast('Entered Demo Admin Mode', 'success');
+    }
+
+    function showAuthenticatedAdminDashboard(roleLabel, emailText) {
+      document.getElementById('adminLoginView').classList.add('hidden');
+      document.getElementById('adminDashboardView').classList.remove('hidden');
+      document.getElementById('adminSignOutBtn').classList.remove('hidden');
+      document.getElementById('adminLockIcon').className = 'fa-solid fa-shield-halved text-emerald-400';
+
+      document.getElementById('loggedInAdminBadge').textContent = roleLabel;
+      document.getElementById('loggedInAdminEmail').textContent = emailText;
+
+      switchAdminTab('queue');
       renderAdminQueue();
+    }
+
+    async function handleAdminSignOut() {
+      if (isSupabaseConfigured && supabaseClient) {
+        await supabaseClient.auth.signOut();
+      }
+      currentAdminUser = null;
+      currentAdminProfile = null;
+      isDemoAdminAuthenticated = false;
+      document.getElementById('adminLockIcon').className = 'fa-solid fa-lock text-amber-400';
+      closeAdminModal();
+      showToast('Signed out of Admin Portal.', 'info');
+    }
+
+    function switchAdminTab(tab) {
+      const queueList = document.getElementById('adminQueueList');
+      const directPanel = document.getElementById('adminDirectAddPanel');
+      const qBtn = document.getElementById('adminTabQueueBtn');
+      const dBtn = document.getElementById('adminTabDirectBtn');
+
+      if (tab === 'queue') {
+        queueList.classList.remove('hidden');
+        directPanel.classList.add('hidden');
+        qBtn.className = 'px-3.5 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold transition';
+        dBtn.className = 'px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-800 text-xs font-bold transition';
+      } else {
+        queueList.classList.add('hidden');
+        directPanel.classList.remove('hidden');
+        dBtn.className = 'px-3.5 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold transition';
+        qBtn.className = 'px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-800 text-xs font-bold transition';
+
+        // Populate parent select for direct admin seeding
+        const sel = document.getElementById('directParentId');
+        sel.innerHTML = `<option value="">-- Root Ancestor (मूल पूर्वज) --</option>` +
+          familyMembers.map(m => `<option value="${m.id}">${m.nameEn} (${m.nameHi}) - ${m.ward}</option>`).join('');
+      }
     }
 
     function closeAdminModal() {
@@ -1661,7 +1807,7 @@
 
     function renderAdminQueue() {
       const list = document.getElementById('adminQueueList');
-      document.getElementById('adminQueueCountLabel').textContent = `${pendingQueue.length} Pending`;
+      document.getElementById('adminQueueCountLabel').textContent = pendingQueue.length;
 
       if (pendingQueue.length === 0) {
         list.innerHTML = `
@@ -1681,35 +1827,44 @@
 
         return `
           <div class="p-4 sm:p-5 rounded-2xl border border-stone-200 bg-stone-50/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="space-y-1.5">
-              <div class="flex items-center gap-2 flex-wrap">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase ${
-                  isTree ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900'
-                }">
-                  ${isTree ? 'Family Tree Addition' : 'Village Prestige Nomination'}
-                </span>
-                <span class="text-xs text-slate-400">• ${req.submittedAt}</span>
-              </div>
-
-              <h4 class="text-base font-extrabold text-slate-900">
-                ${req.data.nameEn} <span class="text-heritage-saffron font-semibold">(${req.data.nameHi})</span>
-              </h4>
-
+            <div class="flex items-start gap-3.5">
               ${
-                isTree
-                  ? `<p class="text-xs text-slate-600">
-                      <strong>Parent/Father:</strong> ${parentObj ? parentObj.nameEn : 'Root Ancestor'} •
-                      <strong>Ward:</strong> ${req.data.ward} •
-                      <strong>Profession:</strong> ${req.data.profession} (${req.data.city})
-                     </p>`
-                  : `<p class="text-xs text-slate-600">
-                      <strong>Role:</strong> ${req.data.role} • ${req.data.bio}
-                     </p>`
+                req.data.photoUrl
+                  ? `<img src="${req.data.photoUrl}" alt="Submitted photo" class="w-14 h-14 rounded-xl object-cover border border-stone-300 shrink-0" />`
+                  : ''
               }
+              <div class="space-y-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase ${
+                    isTree ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-900'
+                  }">
+                    ${isTree ? 'Family Tree Addition' : 'Village Prestige Nomination'}
+                  </span>
+                  <span class="text-xs text-slate-400">• ${req.submittedAt}</span>
+                </div>
 
-              <div class="text-[11px] text-slate-500 pt-1">
-                <i class="fa-solid fa-user-check text-slate-400 mr-1"></i>
-                Submitted by: <strong>${req.submittedBy}</strong> (Ph: ${req.phone})
+                <h4 class="text-base font-extrabold text-slate-900">
+                  ${req.data.nameEn} <span class="text-heritage-saffron font-semibold">(${req.data.nameHi})</span>
+                </h4>
+
+                ${
+                  isTree
+                    ? `<p class="text-xs text-slate-600">
+                        <strong>Father/Parent:</strong> ${parentObj ? parentObj.nameEn : 'Root Ancestor'} •
+                        <strong>Ward:</strong> ${req.data.ward} (${req.data.tola || 'Kushaha'}) •
+                        <strong>Role:</strong> ${req.data.profession} (${req.data.city})
+                       </p>`
+                    : `<p class="text-xs text-slate-600">
+                        <strong>Role:</strong> ${req.data.role} • ${req.data.bio}
+                       </p>`
+                }
+
+                <div class="text-[11px] text-slate-600 pt-1 flex items-center gap-3 flex-wrap">
+                  <span><i class="fa-solid fa-user-check text-slate-400 mr-1"></i> Submitter: <strong>${req.submittedBy}</strong></span>
+                  <a href="tel:${req.phone}" class="text-emerald-700 font-bold hover:underline">
+                    <i class="fa-solid fa-phone mr-1"></i> Call ${req.phone}
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -1726,35 +1881,166 @@
       }).join('');
     }
 
-    function approveSubmission(reqId) {
+    async function approveSubmission(reqId) {
       const idx = pendingQueue.findIndex(r => r.id === reqId);
       if (idx === -1) return;
 
       const req = pendingQueue[idx];
-      if (req.type === 'tree') {
-        const newId = 'm_' + Date.now();
-        const newMember = { id: newId, ...req.data };
-        familyMembers.push(newMember);
-        selectedMemberId = newId;
-        if (req.data.parentId) {
-          collapsedNodes[req.data.parentId] = false; // Auto-expand parent branch
-        }
-      } else if (req.type === 'prestige') {
-        prestigeList.unshift({ id: 'p_' + Date.now(), ...req.data });
-      }
 
-      pendingQueue.splice(idx, 1);
-      saveState();
-      renderAdminQueue();
-      renderAll();
-      showToast(`Approved! "${req.data.nameEn}" is now live on the portal.`, 'success');
+      if (isSupabaseConfigured && supabaseClient && currentAdminUser) {
+        try {
+          if (req.type === 'tree') {
+            const { data: inserted, error: insErr } = await supabaseClient
+              .from('family_members')
+              .insert([{
+                parent_id: req.data.parentId || null,
+                name_en: req.data.nameEn,
+                name_hi: req.data.nameHi,
+                spouse_name: req.data.spouseName || '',
+                ward: req.data.ward || 'Ward 01',
+                tola: req.data.tola || 'Kushaha',
+                profession: req.data.profession || '',
+                city: req.data.city || 'Kushaha',
+                birth_year: req.data.era || '',
+                status: req.data.status || 'Living',
+                photo_url: req.data.photoUrl || '',
+                bio: req.data.bio || '',
+                approved_by: currentAdminUser.id
+              }])
+              .select()
+              .single();
+
+            if (insErr) throw insErr;
+            if (inserted) selectedMemberId = inserted.id;
+          } else if (req.type === 'prestige') {
+            const { error: presErr } = await supabaseClient
+              .from('prestige_members')
+              .insert([{
+                category: req.data.category || 'social',
+                name_en: req.data.nameEn,
+                name_hi: req.data.nameHi,
+                role: req.data.role,
+                year: req.data.year || '2026',
+                ward: req.data.ward || 'Kushaha',
+                photo_url: req.data.photoUrl || '',
+                bio: req.data.bio || '',
+                approved_by: currentAdminUser.id
+              }]);
+            if (presErr) throw presErr;
+          }
+
+          const { error: updErr } = await supabaseClient
+            .from('pending_submissions')
+            .update({
+              status: 'approved',
+              reviewed_by: currentAdminUser.id,
+              reviewed_at: new Date().toISOString()
+            })
+            .eq('id', reqId);
+
+          if (updErr) throw updErr;
+
+          await loadPortalData();
+          renderAdminQueue();
+          showToast(`Published to live database: "${req.data.nameEn}"!`, 'success');
+        } catch (err) {
+          console.error(err);
+          showToast('Approval error: ' + err.message, 'info');
+        }
+      } else {
+        // Offline Demo Mode Approval
+        if (req.type === 'tree') {
+          const newId = 'm_' + Date.now();
+          familyMembers.push({ id: newId, ...req.data });
+          selectedMemberId = newId;
+          if (req.data.parentId) collapsedNodes[req.data.parentId] = false;
+        } else if (req.type === 'prestige') {
+          prestigeList.unshift({ id: 'p_' + Date.now(), ...req.data });
+        }
+        pendingQueue.splice(idx, 1);
+        saveLocalDemoState();
+        renderAdminQueue();
+        renderAll();
+        showToast(`Approved! "${req.data.nameEn}" is now live on the portal.`, 'success');
+      }
     }
 
-    function rejectSubmission(reqId) {
-      pendingQueue = pendingQueue.filter(r => r.id !== reqId);
-      saveState();
-      renderAdminQueue();
-      showToast('Submission rejected and removed from queue.', 'info');
+    async function rejectSubmission(reqId) {
+      if (isSupabaseConfigured && supabaseClient && currentAdminUser) {
+        const { error } = await supabaseClient
+          .from('pending_submissions')
+          .update({
+            status: 'rejected',
+            reviewed_by: currentAdminUser.id,
+            reviewed_at: new Date().toISOString()
+          })
+          .eq('id', reqId);
+
+        if (error) {
+          showToast('Reject failed: ' + error.message, 'info');
+          return;
+        }
+        await fetchAdminPendingQueue();
+        renderAdminQueue();
+        showToast('Submission marked as rejected.', 'info');
+      } else {
+        pendingQueue = pendingQueue.filter(r => r.id !== reqId);
+        saveLocalDemoState();
+        renderAdminQueue();
+        showToast('Submission rejected and removed from queue.', 'info');
+      }
+    }
+
+    async function handleDirectAdminAdd(e) {
+      e.preventDefault();
+      const newEntry = {
+        parentId: document.getElementById('directParentId').value || null,
+        nameEn: document.getElementById('directNameEn').value.trim(),
+        nameHi: document.getElementById('directNameHi').value.trim(),
+        ward: document.getElementById('directWard').value.trim(),
+        tola: document.getElementById('directTola').value.trim(),
+        city: document.getElementById('directCity').value.trim(),
+        profession: document.getElementById('directProfession').value.trim(),
+        status: document.getElementById('directStatus').value,
+        era: 'Verified Record',
+        bio: 'Added directly by Kushaha Portal Admin.'
+      };
+
+      if (isSupabaseConfigured && supabaseClient && currentAdminUser) {
+        const { data, error } = await supabaseClient
+          .from('family_members')
+          .insert([{
+            parent_id: newEntry.parentId,
+            name_en: newEntry.nameEn,
+            name_hi: newEntry.nameHi,
+            ward: newEntry.ward,
+            tola: newEntry.tola,
+            city: newEntry.city,
+            profession: newEntry.profession,
+            status: newEntry.status,
+            bio: newEntry.bio,
+            approved_by: currentAdminUser.id
+          }])
+          .select()
+          .single();
+
+        if (error) {
+          showToast('Error: ' + error.message, 'info');
+          return;
+        }
+        selectedMemberId = data.id;
+        await loadPortalData();
+      } else {
+        const newId = 'm_' + Date.now();
+        familyMembers.push({ id: newId, ...newEntry });
+        selectedMemberId = newId;
+        saveLocalDemoState();
+        renderAll();
+      }
+
+      e.target.reset();
+      switchAdminTab('queue');
+      showToast(`"${newEntry.nameEn}" added directly to Family Tree!`, 'success');
     }
 
     // ---------------------------------------------------------
@@ -1794,8 +2080,8 @@
     }
 
     // Initialize on load
-    window.addEventListener('DOMContentLoaded', () => {
-      renderAll();
+    window.addEventListener('DOMContentLoaded', async () => {
+      await loadPortalData();
     });
   </script>
 </body>
