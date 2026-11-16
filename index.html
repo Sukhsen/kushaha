@@ -814,13 +814,13 @@
     // 0. SUPABASE PRODUCTION CONFIGURATION
     // Replace these two placeholders with your Supabase Project URL & Anon Key
     // =========================================================================
-    const SUPABASE_URL = 'gxkdgtlkpwrmzsfmmrit.supabase.co/rest/v1/';
+    const SUPABASE_URL = 'https://gxkdgtlkpwrmzsfmmrit.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_psa6dtGt-AfT4sKTOgWI0A_bERYvxgh';
     const ADMIN_WHATSAPP_NUMBER = '+918826365049'; // Committee Coordinator WhatsApp
 
     const isSupabaseConfigured =
-      SUPABASE_URL !== 'gxkdgtlkpwrmzsfmmrit.supabase.co/rest/v1/' &&
-      SUPABASE_ANON_KEY !== 'sb_publishable_psa6dtGt-AfT4sKTOgWI0A_bERYvxgh' &&
+      SUPABASE_URL !== 'SUPABASE_URL' &&
+      SUPABASE_ANON_KEY !== 'SUPABASE_ANON_KEY' &&
       SUPABASE_URL.startsWith('https://');
 
     const supabaseClient = isSupabaseConfigured
